@@ -28,16 +28,22 @@ users.get('/login', function (req, res) {
 users.post('/login', function (req, res) {
   if (req.body.username == user.username && req.body.password == user.password) {
     req.session.username = req.body.username;
-    res.redirect('/files');
+    res.redirect('/');
   }
   else {
     res.send('please input the right username and password');
   }
 });
 
-users.get('/files', function (req, res) {
+users.get('/logout', function (req, res) {
+  req.session.destroy(function () {
+    res.redirect('/');
+  });
+});
+
+users.get('/', function (req, res) {
   if (req.session.username) {
-    res.render('admin.html');
+    res.render('admin');
   }
   else {
     res.render('files');

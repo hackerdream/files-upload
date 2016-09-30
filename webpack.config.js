@@ -1,12 +1,15 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    admin: './src/admin.js',
+    user: './src/user.js'
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: '[name].build.js'
   },
   resolveLoader: {
     root: path.join(__dirname, 'node_modules'),

@@ -1,11 +1,11 @@
 var express = require('express');
-var session = require('express-session');
-var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var path = require('path');
 var app = express();
 
 var user = require('./router/user');
+
+var files = require('./router/files');
 
 app.engine('html', ejs.__express);
 
@@ -15,9 +15,13 @@ app.set('views', __dirname + '/views');
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 app.use(user);
+
+app.use(files);
 
 app.get('/', function (req, res) {
   res.render('index.html')

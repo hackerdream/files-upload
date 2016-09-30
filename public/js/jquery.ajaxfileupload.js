@@ -1,7 +1,7 @@
 /**
  * AJAX File Upload
  * http://github.com/davgothic/AjaxFileUpload
- * 
+ *
  * Copyright (c) 2010-2013 David Hancock (http://davidhancock.co)
  *
  * Thanks to Steven Barnett for his generous contributions
@@ -11,7 +11,7 @@
 
 ;(function($) {
 	$.fn.AjaxFileUpload = function(options) {
-		
+
 		var defaults = {
 			action:     "upload.php",
 			onChange:   function(filename) {},
@@ -25,14 +25,14 @@
 				return "_AjaxFileUpload" + id++;
 			};
 		})();
-		
+
 		return this.each(function() {
 			var $this = $(this);
 			if ($this.is("input") && $this.attr("type") === "file") {
 				$this.bind("change", onChange);
 			}
 		});
-		
+
 		function onChange(e) {
 			var $element = $(e.target),
 				id       = $element.attr('id'),
@@ -47,10 +47,10 @@
 			settings.onChange.call($clone[0], filename);
 
 			iframe.bind("load", {element: $clone, form: form, filename: filename}, onComplete);
-			
+
 			form.append($element).bind("submit", {element: $clone, iframe: iframe, filename: filename}, onSubmit).submit();
 		}
-		
+
 		function onSubmit(e) {
 			var data = settings.onSubmit.call(e.data.element, e.data.filename);
 
@@ -71,11 +71,11 @@
 				}
 			}
 		}
-		
+
 		function onComplete (e) {
 			var $iframe  = $(e.target),
 				doc      = ($iframe[0].contentWindow || $iframe[0].contentDocument).document,
-				response = doc.body.innerHTML;
+				response = doc.body.innerText;
 
 			if (response) {
 				response = $.parseJSON(response);
@@ -84,7 +84,7 @@
 			}
 
 			settings.onComplete.call(e.data.element, e.data.filename, response);
-			
+
 			// Remove the temporary form and iframe
 			e.data.form.remove();
 			$iframe.remove();
@@ -100,7 +100,7 @@
 
 			return $('#' + id);
 		}
-		
+
 		function createForm(iframe) {
 			return $("<form />")
 				.attr({

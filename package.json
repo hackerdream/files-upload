@@ -3,8 +3,9 @@
   "description": "A Vue.js project",
   "author": "GraySpider <76154662@qq.com>",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "webpack-dev-server --inline --hot --no-info",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "watch": "webpack --watch"
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",
@@ -13,8 +14,11 @@
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "fs": "0.0.1-security",
+    "keen-ui": "^0.8.9",
     "multer": "^1.2.0",
-    "vue": "^1.0.0"
+    "sqlite3": "^3.1.4",
+    "vue": "^1.0.0",
+    "vue-resource": "^1.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

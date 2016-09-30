@@ -5,10 +5,21 @@
     <title>login</title>
 </head>
 <body>
-<form method="POST" action="/login">
-    <input type="text" name="username" placeholder="请输入用户名">
-    <input type="password" name="password" placeholder="请输入密码">
-    <button type="submit">登录</button>
-</form>
+
+<div style="width: 600px;margin: 200px auto;">
+    <form method="POST" action="/login">
+        <ui-textbox
+                label="用户名:" name="username" type="text" placeholder="请输入用户名"
+        ></ui-textbox>
+        <ui-textbox
+                label="密码:" name="password" type="password" placeholder="请输入用户名"
+        ></ui-textbox>
+        <div style="margin: 20px 260px;">
+            <ui-button button-type="submit">登录</ui-button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="../dist/user.build.js"></script>
 </body>
 </html>

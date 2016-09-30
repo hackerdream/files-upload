@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>admin</title>
+    <title>files</title>
+    <link rel="stylesheet" href="/public/css/font.css">
+    <link rel="stylesheet" href="/public/css/keen-ui.css">
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+            line-height: 18px;
+        }
+    </style>
 </head>
 <body>
-<h1> its admin page</h1>
+
+<div style="position: relative;width: 1200px;margin: 100px auto;">
+    <div style="float:right;position: absolute;right: 40px;top:-3px">
+        <a href="/logout">
+            <ui-button type="flat">登出</ui-button>
+        </a>
+    </div>
+
+    <admin-table></admin-table>
+
+</div>
+
+<script type="text/javascript" src="../public/js/jquery.js"></script>
+<script type="text/javascript" src="../public/js/jquery.ajaxfileupload.js"></script>
+<script type="text/javascript" src="../dist/admin.build.js"></script>
+<script type="text/javascript">
+</script>
 </body>
 </html>
