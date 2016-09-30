@@ -6,3 +6,4 @@ npm-debug.log
 .idea/
 tsconfig.json
 uploads/
+database.db

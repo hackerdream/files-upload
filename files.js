@@ -7,15 +7,17 @@ function createFileDatabase() {
 }
 
 
-function insertFile(fileName, fileDestination, filePath) {
-  var filesData = db.prepare("INSERT INTO files VALUES (?,?,?,DATETIME('now','+8 hour'))");
-  filesData.run(fileName, fileDestination, filePath);
-  filesData.finalize();
+function insertFile(fileName, fileDestination, filePath, callback) {
+  db.run("INSERT INTO files VALUES (?,?,?,DATETIME('now','+8 hour'))", [fileName, fileDestination, filePath], function (err, row) {
+    db.get("SELECT * from files where rowid =" + this.lastID, function (err, row) {
+      callback(row);
+    });
+  });
 }
 
 function findFileById(itemId, callback) {
   db.get("SELECT * from files where rowid =" + itemId, function (err, row) {
-    callback(row)
+    callback(row);
   });
 
 }

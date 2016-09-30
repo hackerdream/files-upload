@@ -94,7 +94,7 @@
             $('#upload-file').AjaxFileUpload({
                 action: "/upload",
                 onComplete: function (filename, response) {
-                    console.log(response);
+                    store.addFile(response);
                 }
             });
         },
@@ -109,7 +109,7 @@
         methods: {
             deleteFile(id){
                 this.$http.delete('/delete/' + id).then(function (res) {
-
+                    store.deleteFileByIndex(id);
                 })
             }
         }

@@ -4,7 +4,6 @@
             <thead>
             <tr>
                 <th>文件名</th>
-                <th>文件存储路径</th>
                 <th>文件上传时间</th>
                 <th>文件操作</th>
             </tr>
@@ -12,7 +11,6 @@
             <tbody>
             <tr v-for="file in files">
                 <td>{{file.fileName}}</td>
-                <td>{{file.filePath}}</td>
                 <td>{{file.time}}</td>
                 <td>
                     <ui-button color="primary">下载</ui-button>

@@ -15,16 +15,9 @@ files.get('/files', function (req, res) {
 });
 
 files.post('/upload', upload.single('file'), function (req, res) {
-  fs.rename(req.file.destination + req.file.filename, req.file.destination + req.file.originalname, function (err) {
-    if (err) {
-      console.log("error\n");
-    } else {
-      fileData.insertFile(req.file.originalname, req.file.destination, req.file.destination + req.file.filename);
-      res.setHeader('Content-Type', "application/json");
-      res.send(JSON.stringify({
-        message:"ok"
-      }));
-    }
+  fileData.insertFile(req.file.originalname, req.file.destination, req.file.destination + req.file.filename, function (result) {
+    res.setHeader('Content-Type', "application/json");
+    res.send(JSON.stringify(result));
   });
 });
 
